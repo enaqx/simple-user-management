@@ -1,0 +1,108 @@
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px;
+}
+
+/*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+.navbar-fixed-top {
+  border: 0;
+}
+
+/* Sidebar navigation */
+.nav-sidebar {
+  margin-right: -21px; /* 20px padding + 1px border */
+  margin-bottom: 20px;
+  margin-left: -20px;
+}
+.nav-sidebar > li > a {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+  color: #fff;
+  background-color: #777;
+}
+
+/*
+ * Main content
+ */
+
+.main-container {
+  padding: 20px;
+}
+@media (min-width: 768px) {
+  .main-container {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+.main-container .page-header {
+  margin-top: 0;
+}
+
+.media-object {
+  width: 80px;
+  height: 80px;
+  border-radius: 5px;
+}
+
+.media .thumbnail {
+  display: inline-block;
+  margin-bottom: 0;
+}
+
+.media-list {
+  text-align: center;
+}
+
+@media (min-width: 450px) {
+  .media-list {
+    text-align: left;
+  }
+
+  .media .thumbnail {
+    float: left;
+    margin-right: 25px;
+  }
+}
+
+.media:first-child {
+  margin-top: 15px;
+}
+
+.btn-outline {
+  color: #563d7c;
+  background-color: transparent;
+  border-color: #563d7c;
+}
+
+.btn-outline:hover,
+.btn-outline:focus,
+.btn-outline:active {
+  color: #fff;
+  background-color: #563d7c;
+  border-color: #563d7c;
+}
+
+a {
+  color: #563d7c;
+}
+
+a:hover,
+a:focus {
+  color: #1d1429;
+}
+
+a.thumbnail:hover,
+a.thumbnail:focus,
+a.thumbnail.active {
+  border-color: #563d7c;
+}
+
+.user-color {
+}

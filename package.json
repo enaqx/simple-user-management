@@ -1,0 +1,22 @@
+{
+  "name": "simple-user-management-backbone",
+  "version": "0.0.1",
+  "description": "Simple User Management using Backbone",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/enaqx/backbone-contact-manager.git"
+  },
+  "author": "Nick Raienko <enaqxx@gmail.com> (http://enaqx.github.io/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/enaqxk/backbone-contact-manager/issues"
+  },
+  "homepage": "https://github.com/enaqx/backbone-contact-manager",
+  "devDependencies": {
+    "express": "^4.10.3",
+    "nodemon": "^1.2.1"
+  }
+}

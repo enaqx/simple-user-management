@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>User Management</title>
+    <link href="vendor/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="app/css/main.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <!-- Header -->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Simple User Management with Backbone</a>
+        </div>
+      </div>
+    </nav>
+    <!-- Header end -->
+
+    
+    <div class="container-fluid">
+      <div class="row">
+
+      <!-- Sidebar -->
+      <div class="col-md-2 sidebar">
+        <ul class="nav nav-sidebar">
+          <li class="active"><a href="#users">Users <span class="sr-only">(current)</span></a></li>
+          <li><a href="#projects">Projects</a></li>
+        </ul>
+      </div>
+      <!-- Sidebar end -->
+
+      <!-- Main Container -->
+      <div class="col-md-10 main-container">
+      </div>
+      <!-- Main Container end -->
+
+      </div>
+    </div>
+    <!-- Main Container end -->
+
+    <script type="text/template" id="tpl-users">
+      <h2 class="page-header text-left">List of users</h2>
+      <p class="text-left">
+        <a href="#users/new" class="btn btn-lg btn-outline">Add User</a>
+      </p>
+      <ul class="media-list row users-container"></ul>
+    </script>
+
+    <script type="text/template" id="tpl-user">
+      <div class="thumbnail">
+        <style> .user-color-<%- id %>  { background: <%- color %> }</style>
+        <span class="media-object user-color-<%- id %>"></span>
+      </div>
+      <div class="media-heading">
+        <h3>
+          <%- name %>
+          <small>
+            <a href="#users/edit/<%- id %>"><span class="glyphicon glyphicon-pencil"></span></a>
+            <a href="#users/delete/<%- id %>" class="delete-user"><span class="glyphicon glyphicon-trash"></span></a>
+          </small>
+        </h3>
+      </div>
+      <div class="media-body">
+        <dl>
+          <dt>Email:</dt>
+          <dd><%- email %></dd>
+          <dt>City:</dt>
+          <dd><%- city %></dd>
+        </dl>
+      </div>
+      <hr>
+    </script>
+
+    <script type="text/template" id="tpl-new-user">
+      <h2 class="page-header text-center"><%= isNew ? 'Add' : 'Edit' %> User</h2>
+      <form role="form" class="form-horizontal user-form">
+        <div class="form-group">
+          <label class="col-sm-4 control-label">Name:</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control user-name-input" value="<%- name %>">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-4 control-label">Email:</label>
+          <div class="col-sm-6">
+            <input type="email" class="form-control user-email-input" value="<%- email %>">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-4 control-label">City:</label>
+          <div class="col-sm-6 dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="cityDropdown" data-toggle="dropdown" aria-expanded="true">
+            Choose City...
+              <span class="caret"></span>
+            </button>
+            </button>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="cityDropdown">
+                <li role="presentation">New York City</li>
+                <li role="presentation">New Orlean</li>
+                <li role="presentation">San Francisco</li>
+                <li role="presentation">Washingthon DC</li>
+              </ul>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-4 col-sm-3">
+            <button type="submit" class="btn btn-outline btn-lg btn-block">Add</button>
+          </div>
+          <div class="col-sm-3">
+            <a href="#users" class="btn btn-outline btn-lg btn-block">Cancel</a>
+          </div>
+        </div>
+      </form>
+    </script>
+
+    <script src="vendor/jquery/dist/jquery.js"></script>
+    <script src="vendor/underscore/underscore.js"></script>
+    <script src="vendor/backbone/backbone.js"></script>
+
+    <script src="app/js/app.js"></script>
+    <script src="app/js/models/user.js"></script>
+    <script src="app/js/models/project.js"></script>
+    <script src="app/js/collections/users.js"></script>
+    <script src="app/js/collections/projects.js"></script>
+    <script src="app/js/views/user.js"></script>
+    <script src="app/js/views/users.js"></script>
+    <script src="app/js/views/userForm.js"></script>
+    <script src="app/js/views/project.js"></script>
+    <script src="app/js/views/projects.js"></script>
+    <script src="app/js/views/projectForm.js"></script>
+    <script src="app/js/router.js"></script>
+
+    <script>
+      $(function() {
+        UserManagement.start({
+          users: [
+            {
+              id: 1,
+              name : 'John Smith',
+              email: 'jsmith@gmail.com',
+              city : 'Las Vegas',
+              color: '#316B4A'
+            },
+            {
+              id: 2,
+              name : 'Chris Ali',
+              email: 'chris@day.com',
+              city : 'Los Angeles',
+              color: '#A316B4'
+            },
+            {
+              id: 3,
+              name : 'Deborah Rich',
+              email: 'debra@tel.com',
+              city : 'New York City',
+              color: '#16B431'
+            },
+            {
+              id: 4,
+              name : 'Michael Bauman',
+              email: 'mbudro@him.com',
+              city : 'New Orlean',
+              color: '#FF16B4'
+            },
+            {
+              id: 5,
+              name : 'John Wilson',
+              email: 'jw@day.com',
+              city : 'Las Vegas',
+              color: '#AAAFF1'
+            },
+            {
+              id: 6,
+              name : 'Rudolf Waym',
+              email: 'rwm@jourrapide.com',
+              city : 'San Francisco',
+              color: '#AFF431'
+            }
+          ]
+        });
+      });
+    </script>
+
+  </body>
+</html>
