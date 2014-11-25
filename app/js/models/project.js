@@ -1,3 +1,7 @@
+/* Project Model */
+
+"use strict";
+
 UserManagement.Models.Project = Backbone.Model.extend({
   defaults: {
     name: null,

@@ -3,6 +3,10 @@ UserManagement.Router = Backbone.Router.extend({
     '': 'home',
     'users': 'showUsers',
     'users/new': 'newUser',
-    'users/edit/:id': 'editUser'
+    'users/edit/:id': 'editUser',
+
+    'projects': 'showProjects',
+    'project/new': 'newProject',
+    'project/edit/:id': 'editProject',
   }
 });

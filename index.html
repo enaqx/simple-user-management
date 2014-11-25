@@ -43,6 +43,7 @@
     </div>
     <!-- Main Container end -->
 
+    <!-- User List template -->
     <script type="text/template" id="tpl-users">
       <h2 class="page-header text-left">List of users</h2>
       <p class="text-left">
@@ -75,7 +76,9 @@
       </div>
       <hr>
     </script>
+    <!-- User List template end -->
 
+    <!-- Add/Edit User Form template -->
     <script type="text/template" id="tpl-new-user">
       <h2 class="page-header text-center"><%= isNew ? 'Add' : 'Edit' %> User</h2>
       <form role="form" class="form-horizontal user-form">
@@ -93,18 +96,13 @@
         </div>
         <div class="form-group">
           <label class="col-sm-4 control-label">City:</label>
-          <div class="col-sm-6 dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" id="cityDropdown" data-toggle="dropdown" aria-expanded="true">
-            Choose City...
-              <span class="caret"></span>
-            </button>
-            </button>
-              <ul class="dropdown-menu" role="menu" aria-labelledby="cityDropdown">
-                <li role="presentation">New York City</li>
-                <li role="presentation">New Orlean</li>
-                <li role="presentation">San Francisco</li>
-                <li role="presentation">Washingthon DC</li>
-              </ul>
+          <div class="col-sm-6">
+            <select id="cityList" name="cityId" class="form-control input-medium">
+            <option value="New York">New York</option>
+              <option value="San Francisco">San Francisco</option>
+              <option value="New Orlean">New Orlean</option>
+              <option value="Las Begas">Las Begas</option>
+            </select>
           </div>
         </div>
         <div class="form-group">
@@ -117,6 +115,38 @@
         </div>
       </form>
     </script>
+    <!-- Add/Edit User Form template end -->
+
+    <!-- Project List template -->
+    <script type="text/template" id="tpl-projects">
+      <h2 class="page-header text-left">List of projects</h2>
+      <p class="text-left">
+        <a href="#projects/new" class="btn btn-lg btn-outline">Add Project</a>
+      </p>
+      <ul class="media-list row projects-container"></ul>
+    </script>
+
+    <script type="text/template" id="tpl-project">
+      <div class="media-heading">
+        <h3>
+          <%- name %>
+          <small>
+            <a href="#projects/edit/<%- id %>"><span class="glyphicon glyphicon-pencil"></span></a>
+            <a href="#projects/delete/<%- id %>" class="delete-project"><span class="glyphicon glyphicon-trash"></span></a>
+          </small>
+        </h3>
+      </div>
+      <div class="media-body">
+        <dl>
+          <dt>Description:</dt>
+          <dd><%- description %></dd>
+          <dt>Status:</dt>
+          <dd><%- status %></dd>
+        </dl>
+      </div>
+      <hr>
+    </script>
+    <!-- Project template end -->
 
     <script src="vendor/jquery/dist/jquery.js"></script>
     <script src="vendor/underscore/underscore.js"></script>
@@ -125,6 +155,7 @@
     <script src="app/js/app.js"></script>
     <script src="app/js/models/user.js"></script>
     <script src="app/js/models/project.js"></script>
+    <script src="app/js/models/cityList.js"></script>
     <script src="app/js/collections/users.js"></script>
     <script src="app/js/collections/projects.js"></script>
     <script src="app/js/views/user.js"></script>
@@ -135,6 +166,7 @@
     <script src="app/js/views/projectForm.js"></script>
     <script src="app/js/router.js"></script>
 
+    <!-- Mocking User list object -->
     <script>
       $(function() {
         UserManagement.start({
@@ -185,6 +217,7 @@
         });
       });
     </script>
+    <!-- Mocking User list object end -->
 
   </body>
 </html>
